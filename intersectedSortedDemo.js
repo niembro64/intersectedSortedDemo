@@ -2,6 +2,7 @@ const intersect = (arrLeft, arrRight) => {
   const counterLeft = [];
   const counterRight = [];
   const returnArr = [];
+  const returnArrMod = [];
   for (let i = 0; i < 10; i++) {
     counterLeft[i] = counterRight[i] = returnArr[i] = 0;
   }
@@ -15,20 +16,25 @@ const intersect = (arrLeft, arrRight) => {
   p(counterLeft);
   p(counterRight);
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < returnArr.length; i++) {
     if (counterLeft[i] > counterRight[i]) {
       returnArr[i] = counterRight[i];
     } else {
       returnArr[i] = counterLeft[i];
     }
   }
-  return returnArr;
+  for (let i = 0; i < returnArr.length; i++) {
+    for (let j = 0; j < returnArr[i]; j++) {
+      returnArrMod.push(i);
+    }
+  }
+  return returnArrMod;
 };
 
 const p = (a) => {
   console.log(a);
 };
-var left = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var right = [0, 1, 1, 1, 9, 9, 9, 9, 9, 9];
+var left = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9];
+var right = [0, 1, 1, 1, 9, 9, 9, 9, 9, 9, 9, 10];
 
 console.log(intersect(left, right));
